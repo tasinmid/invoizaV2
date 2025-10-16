@@ -1,0 +1,101 @@
+:root {
+    --deep-purple: #2E073F;
+    --primary-purple: #7A1CAC;
+    --accent-purple: #AD49E1;
+    --pastel: #EBD3F8;
+    --white: #ffffff;
+    --muted: #a0a0b4;
+    --surface-bg: #3a1b4a; /* A lighter purple for surfaces */
+    --border-color: rgba(255, 255, 255, 0.1);
+    --card-radius: 14px;
+    --control-radius: 10px;
+}
+
+body {
+    background-color: var(--deep-purple);
+    color: var(--muted);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent; /* Remove blue box on mobile */
+}
+
+.bg-light {
+    background-color: rgba(0,0,0,0.1) !important; /* Subtle dark shade for left pane */
+}
+
+.card {
+    background-color: var(--surface-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--card-radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.card-header {
+    background-color: transparent;
+    color: var(--pastel);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 1.25rem;
+}
+
+.card-header h5 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.card-header i {
+    color: var(--accent-purple);
+    font-size: 1.1rem;
+    margin-right: 0.75rem;
+    vertical-align: middle;
+}
+
+.text-muted {
+    color: var(--muted) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--white);
+}
+
+header h1 {
+    background: linear-gradient(45deg, var(--accent-purple), var(--pastel));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+/* Global Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px; /* For horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-purple); /* Use a primary color for better visibility */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-purple);
+}
+
+/* For Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-purple) rgba(0,0,0,0.1);
+}
+
+.solven-app-link {
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.solven-app-link:hover {
+    text-decoration: underline !important;
+    cursor: pointer;
+    color: var(--accent-purple) !important; /* Example hover color */
+}

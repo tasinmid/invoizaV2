@@ -1,0 +1,95 @@
+/* --- Animations --- */
+.invoice-item {
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.invoice-item.fade-out {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+.invoice-item.fade-in {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+/* --- Tooltips --- */
+.tooltip-inner {
+    background-color: var(--accent-purple);
+    color: var(--white);
+    border-radius: var(--control-radius);
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.tooltip.bs-tooltip-top .tooltip-arrow::before {
+    border-top-color: var(--accent-purple);
+}
+
+.tooltip.bs-tooltip-end .tooltip-arrow::before {
+    border-right-color: var(--accent-purple);
+}
+
+/* --- Components --- */
+#addInvoiceItem {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    padding: 0;
+    z-index: 10;
+}
+
+#addInvoiceItem:disabled {
+    background: var(--muted);
+    opacity: 0.5;
+    transform: none;
+    box-shadow: none;
+}
+
+#responseDisplay {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 0.875rem;
+    background-color: rgba(0,0,0,0.2);
+    color: var(--muted);
+    border-radius: var(--card-radius);
+    border: 1px solid var(--border-color);
+}
+
+.invoice-item {
+    position: relative;
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: var(--card-radius);
+    background-color: transparent;
+    transition: border-color 0.2s;
+}
+
+.invoice-item:hover {
+    border-color: var(--accent-purple);
+}
+
+.invoice-item h4 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--pastel);
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.invoice-item .btn-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    filter: invert(1) grayscale(100%) brightness(200%);
+}

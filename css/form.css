@@ -1,0 +1,476 @@
+/* Main Action Button */
+.btn-primary {
+    background: linear-gradient(45deg, var(--primary-purple), var(--accent-purple));
+    border: none;
+    height: 52px;
+    border-radius: var(--control-radius);
+    font-weight: 500;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(173, 73, 225, 0.3);
+}
+
+/* Custom Segmented Control */
+.btn-group {
+    border-radius: var(--control-radius);
+    background-color: rgba(0,0,0,0.2);
+    padding: 4px;
+}
+
+.btn-group .btn {
+    border: none;
+    color: var(--muted);
+    background-color: transparent;
+    border-radius: 8px !important; /* Override bootstrap */
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Smoother transition */
+    outline: none !important; /* Remove blue box on click/focus */
+    -webkit-tap-highlight-color: transparent; /* For touch devices */
+}
+
+.btn-group .btn.active {
+    background-color: var(--surface-bg);
+    color: var(--white);
+    box-shadow: 0 0 0 0.25rem rgba(173, 73, 225, 0.5); /* Accent purple glow */
+}
+
+.btn-group .btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(173, 73, 225, 0.5); /* Accent purple glow on focus */
+}
+
+/* Payment Method Buttons with Icons */
+/* Payment Method Buttons with Icons */
+/* Payment Method Buttons with Icons */
+#pm-btn-group {
+    display: flex; /* Ensure flex container for buttons */
+    gap: 4px; /* Gap between buttons */
+}
+
+#pm-btn-group .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content initially */
+    padding: 0.75rem 1rem; /* Adjust padding for better look */
+    flex-grow: 0; /* Don't grow by default */
+    flex-shrink: 0; /* Don't shrink by default */
+    overflow: hidden; /* Hide overflowing text */
+    transition: all 0.3s ease; /* Smooth transition for all relevant properties */
+    width: 52px; /* Fixed width for inactive (icon only) */
+    box-shadow: none !important; /* Ensure no box outlining on active/focus */
+}
+
+#pm-btn-group .btn i {
+    font-size: 1.25rem; /* Adjust icon size */
+    line-height: 1; /* Ensure icon aligns well */
+    flex-shrink: 0; /* Prevent icon from shrinking */
+    margin-right: 0; /* No margin by default */
+    transition: margin-right 0.3s ease; /* Transition for margin */
+}
+
+#pm-btn-group .btn .button-text {
+    white-space: nowrap; /* Prevent text wrapping */
+    flex-shrink: 0; /* Prevent text from shrinking */
+    opacity: 0; /* Start hidden */
+    max-width: 0; /* Collapse width */
+    margin-left: 0; /* No margin by default */
+    transition: opacity 0.3s ease, max-width 0.3s ease, margin-left 0.3s ease; /* Smooth transition for text */
+}
+
+#pm-btn-group .btn.active {
+    width: auto; /* Expand width to fit content */
+    flex-grow: 1; /* Allow to grow when active */
+    justify-content: flex-start; /* Align to start when text is visible */
+    background-color: var(--surface-bg); /* Active background */
+    transform: translateY(-2px); /* Subtle lift for active button */
+}
+
+#pm-btn-group .btn:not(.active):hover {
+    width: auto; /* Expand width on hover */
+    flex-grow: 1; /* Allow to grow on hover */
+    justify-content: flex-start; /* Align to start on hover */
+    background-color: rgba(173, 73, 225, 0.2); /* More noticeable hover background */
+    transform: translateY(-2px); /* Subtle lift for hover */
+}
+
+#pm-btn-group .btn.active i,
+#pm-btn-group .btn:not(.active):hover i {
+    margin-right: 0.5rem; /* Add margin to icon when text is visible */
+}
+
+#pm-btn-group .btn.active .button-text,
+#pm-btn-group .btn:not(.active):hover .button-text {
+    opacity: 1; /* Show text */
+    max-width: 100px; /* Expand width (adjust as needed) */
+    margin-left: 0.5rem; /* Add margin to create space between icon and text */
+}
+
+/* Invoice Type Buttons with Icons */
+#it-btn-group {
+    display: flex; /* Ensure flex container for buttons */
+    gap: 4px; /* Gap between buttons */
+}
+
+#it-btn-group .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content initially */
+    padding: 0.75rem 1rem; /* Adjust padding for better look */
+    flex-grow: 0; /* Don't grow by default */
+    flex-shrink: 0; /* Don't shrink by default */
+    overflow: hidden; /* Hide overflowing text */
+    transition: all 0.3s ease; /* Smooth transition for all relevant properties */
+    width: 52px; /* Fixed width for inactive (icon only) */
+    box-shadow: none !important; /* Ensure no box outlining on active/focus */
+}
+
+#it-btn-group .btn i {
+    font-size: 1.25rem; /* Adjust icon size */
+    line-height: 1; /* Ensure icon aligns well */
+    flex-shrink: 0; /* Prevent icon from shrinking */
+    margin-right: 0; /* No margin by default */
+    transition: margin-right 0.3s ease; /* Transition for margin */
+}
+
+#it-btn-group .btn .button-text {
+    white-space: nowrap; /* Prevent text wrapping */
+    flex-shrink: 0; /* Prevent text from shrinking */
+    opacity: 0; /* Start hidden */
+    max-width: 0; /* Collapse width */
+    margin-left: 0; /* No margin by default */
+    transition: opacity 0.3s ease, max-width 0.3s ease, margin-left 0.3s ease; /* Smooth transition for text */
+}
+
+#it-btn-group .btn.active {
+    width: auto; /* Expand width to fit content */
+    flex-grow: 1; /* Allow to grow when active */
+    justify-content: flex-start; /* Align to start when text is visible */
+    background-color: var(--surface-bg); /* Active background */
+    transform: translateY(-2px); /* Subtle lift for active button */
+}
+
+#it-btn-group .btn:not(.active):hover {
+    width: auto; /* Expand width on hover */
+    flex-grow: 1; /* Allow to grow on hover */
+    justify-content: flex-start; /* Align to start on hover */
+    background-color: rgba(173, 73, 225, 0.2); /* More noticeable hover background */
+    transform: translateY(-2px); /* Subtle lift for hover */
+}
+
+#it-btn-group .btn.active i,
+#it-btn-group .btn:not(.active):hover i {
+    margin-right: 0.5rem; /* Add margin to icon when text is visible */
+}
+
+#it-btn-group .btn.active .button-text,
+#it-btn-group .btn:not(.active):hover .button-text {
+    opacity: 1; /* Show text */
+    max-width: 100px; /* Expand width (adjust as needed) */
+    margin-left: 0.5rem; /* Add margin to create space between icon and text */
+}
+
+/* Custom Template Select Dropdown */
+.custom-select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.custom-select-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding-right: 1rem; /* Space for the arrow */
+}
+
+.custom-select-trigger #selected-template-preview {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: var(--control-radius);
+    margin-right: 0.75rem;
+}
+
+.custom-select-trigger #selected-template-name {
+    flex-grow: 1;
+    color: var(--white);
+}
+
+.custom-select-trigger .dropdown-arrow {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.custom-select-trigger.open .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.custom-select-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--surface-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--control-radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    z-index: 1000;
+    max-height: 0; /* Start collapsed */
+    overflow: hidden;
+    transition: max-height 0.3s ease, border-color 0.3s ease;
+}
+
+.custom-select-options.open {
+    max-height: 300px; /* Max height when open, adjust as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border-color: var(--accent-purple);
+}
+
+/* Custom Scrollbar for Template Dropdown */
+.custom-select-options::-webkit-scrollbar {
+    width: 8px;
+}
+
+.custom-select-options::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.custom-select-options::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+}
+
+.custom-select-options::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+.custom-select-option {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    color: var(--muted);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.custom-select-option:hover {
+    background-color: var(--primary-purple);
+    color: var(--white);
+}
+
+.custom-select-option img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: var(--control-radius);
+    margin-right: 0.75rem;
+}
+
+.custom-select-option.selected {
+    background-color: var(--primary-purple);
+    color: var(--white);
+    font-weight: 500;
+}
+
+/* Form Controls */
+.form-label {
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-control, .form-select, .flatpickr-input {
+    height: 52px;
+    border-radius: var(--control-radius);
+    background-color: rgba(0,0,0,0.2);
+    border: 1px solid transparent;
+    color: var(--white);
+    transition: border-color 0.2s;
+    width: 100%; /* Ensure it takes full width */
+}
+
+/* Specific styling for flatpickr input to make it look like a form-control */
+input.flatpickr-input {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.form-control::placeholder {
+    color: var(--muted);
+    opacity: 0.6;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: rgba(0,0,0,0.2);
+    color: var(--white);
+    border-color: var(--accent-purple);
+    box-shadow: none;
+}
+
+.form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+/* Hide arrows from number inputs */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Swift Code validation icon positioning */
+#pm_sc_invalid_icon {
+    top: 50%;
+    right: 0.75rem; /* Slightly adjust right position */
+    transform: translateY(-50%);
+    cursor: pointer; /* So the tooltip shows on hover */
+    z-index: 2; /* Ensure it's above the input */
+}
+
+#pm_sc {
+    padding-right: 2.5rem; /* Add space for the icon */
+}
+
+
+
+
+
+/* Apply dark theme to browser-native UI (calendar, dropdown) */
+select, input[type="date"] {
+    color-scheme: dark;
+}
+
+/* Month Tag Selector */
+.month-selector-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: var(--control-radius);
+    background-color: rgba(0,0,0,0.2);
+    min-height: 52px;
+}
+
+.selected-months-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    flex-grow: 1;
+}
+
+.month-tag {
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-purple);
+    color: var(--white);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.month-tag .btn-close-tag {
+    background: none;
+    border: none;
+    color: var(--white);
+    opacity: 0.7;
+    margin-left: 0.5rem;
+    padding: 0;
+    font-size: 1rem;
+}
+
+.month-tag .btn-close-tag:hover {
+    opacity: 1;
+}
+
+.add-month-btn {
+    flex-shrink: 0;
+}
+
+.month-dropdown {
+    background-color: var(--surface-bg);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+}
+
+.month-dropdown .dropdown-item {
+    color: var(--muted);
+}
+
+.month-dropdown .dropdown-item:hover {
+    background-color: var(--primary-purple);
+    color: var(--white);
+}
+
+.month-dropdown .dropdown-item.disabled {
+    color: rgba(255,255,255,0.2);
+    background-color: transparent;
+}
+
+/* Conditional UI elements */
+#recipientEmailField,
+#bankDetailsFields,
+#paypalFields,
+#paymentLinkFields,
+#otherPaymentNote {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 0.4s ease-out, max-height 0.4s ease-out, transform 0.4s ease-out;
+    transform: translateY(-10px);
+}
+
+#recipientEmailField.active,
+#bankDetailsFields.active,
+#paypalFields.active,
+#paymentLinkFields.active,
+#otherPaymentNote.active {
+    max-height: 500px; /* Adjust to fit the content */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Styling for scrollable textareas */
+#pm_ai,
+#an {
+    min-height: 52px; /* Match other form controls */
+    height: auto;
+    max-height: 8rem; /* Approx 3-4 lines */
+    overflow-y: auto;
+}
+
+#pm_ai::-webkit-scrollbar,
+#an::-webkit-scrollbar {
+    width: 8px;
+}
+
+#pm_ai::-webkit-scrollbar-track,
+#an::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+#pm_ai::-webkit-scrollbar-thumb,
+#an::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+}
+
+#pm_ai::-webkit-scrollbar-thumb:hover,
+#an::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+.validation-icon-hidden {
+    display: none !important;
+}
+
