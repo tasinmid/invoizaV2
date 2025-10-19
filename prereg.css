@@ -1,0 +1,86 @@
+/* Preregistration Modal Styles */
+
+#preregModal .modal-content {
+    background-color: var(--surface-bg);
+    border: 1px solid var(--accent-purple);
+    border-radius: var(--card-radius);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    text-align: center;
+    padding: 2rem;
+}
+
+#preregModal .modal-header {
+    border-bottom: none;
+    padding: 0;
+    position: relative;
+}
+
+#preregModal .btn-close {
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+#countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+#countdown-timer > div {
+    background: linear-gradient(45deg, var(--primary-purple), var(--accent-purple));
+    padding: 1rem;
+    border-radius: var(--control-radius);
+    min-width: 80px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+#countdown-timer span {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+}
+
+#countdown-timer p {
+    font-size: 0.8rem;
+    color: var(--pastel);
+    margin: 0;
+    text-transform: uppercase;
+}
+
+#preregModal .modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#preregModal .modal-body p {
+    color: var(--muted);
+    font-size: 1.1rem;
+    max-width: 400px;
+    margin: 0 auto 1.5rem auto;
+}
+
+#reserveSpotBtn {
+    width: 100%;
+    max-width: 300px;
+}
+
+#giveUpBtn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    text-decoration: underline;
+    margin-top: 1rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#giveUpBtn:hover {
+    color: var(--white);
+}
