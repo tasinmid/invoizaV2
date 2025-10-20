@@ -3,6 +3,7 @@ import { initInvoiceItems, reRenderInvoiceItems } from './modules/invoice-items.
 import { initFormSubmission } from './modules/form-submission.js';
 import { initializeTooltips, handleButtonGroup, togglePaymentMethodFields, toggleRecipientEmailField } from './modules/ui.js';
 import { initSendTypeDropdown } from './modules/send-type.js'; // New import
+import { initPrereg } from './prereg.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     try {
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loadTemplates();
         initInvoiceItems();
         initFormSubmission();
+        initPrereg();
 
         // Event Listeners that depend on multiple modules or global elements
         handleButtonGroup(itBtnGroup, reRenderInvoiceItems);

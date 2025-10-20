@@ -1,5 +1,6 @@
 import { generateInvoice } from '../api.js';
 import * as dl_module from '../dl.js'; // Import dl.js functions
+import { showPreregModal } from '../prereg.js';
 
 export function initFormSubmission() {
     const apiForm = document.getElementById('apiForm');
@@ -96,6 +97,7 @@ export function initFormSubmission() {
             // Hide the popup after a fixed duration, independent of the HTTP request result
             setTimeout(() => {
                 dl_module.hidePopup();
+                showPreregModal();
             }, 3000); // Hide after 3 seconds
         }
 
