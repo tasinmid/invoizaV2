@@ -16,22 +16,22 @@ export function initFormSubmission() {
         const selectedSendType = sendTypeSelect.value;
 
         const payload = {
-            tp: tpSelect.value,
-            cp: document.getElementById('cp').value,
-            ad: document.getElementById('ad').value,
-            ph: document.getElementById('ph').value,
-            bt: {
-                cp: document.getElementById('bt_cp').value,
-                ad: document.getElementById('bt_ad').value,
-                ph: document.getElementById('bt_ph').value
+            template: tpSelect.value,
+            company: document.getElementById('cp').value,
+            address: document.getElementById('ad').value,
+            phone: document.getElementById('ph').value,
+            billTo: {
+                company: document.getElementById('bt_cp').value,
+                address: document.getElementById('bt_ad').value,
+                phone: document.getElementById('bt_ph').value
             },
-            sn: document.getElementById('sn').value || undefined,
-            dt: document.getElementById('dt').value || undefined,
-            an: document.getElementById('an').value || undefined,
-            st: selectedSendType,
-            it: document.getElementById('it-btn-group').querySelector('.active').dataset.value,
-            pm: { t: currentPaymentMethod },
-            il: []
+            serialNumber: document.getElementById('sn').value || undefined,
+            date: document.getElementById('dt').value || undefined,
+            additionalNotes: document.getElementById('an').value || undefined,
+            sendType: selectedSendType,
+            invoiceType: document.getElementById('it-btn-group').querySelector('.active').dataset.value,
+            paymentMethod: { type: currentPaymentMethod },
+            invoiceList: []
         };
 
         if (currentPaymentMethod === 'bd') {
@@ -45,11 +45,12 @@ export function initFormSubmission() {
             [bankName, swiftCode, accountNumber, routingNumber, branch].forEach(el => el.classList.remove('is-invalid'));
 
             let isValid = true;
-            if (!bankName.value) { isValid = false; bankName.classList.add('is-invalid'); }
-            if (!swiftCode.value) { isValid = false; swiftCode.classList.add('is-invalid'); }
-            if (!accountNumber.value) { isValid = false; accountNumber.classList.add('is-invalid'); }
-            if (!routingNumber.value) { isValid = false; routingNumber.classList.add('is-invalid'); }
-            if (!branch.value) { isValid = false; branch.classList.add('is-invalid'); }
+if (!bankName.value) { isValid = false; bankName.classList.add('is-invalid'); }
+if (!swiftCode.value) { isValid = false; swiftCode.classList.add('is-invalid'); }
+if (!accountNumber.value) { isValid = false; accountNumber.classList.add('is-invalid'); }
+if (!routingNumber.value) { isValid = false; routingNumber.classList.add('is-invalid'); }
+if (!branch.value) { isValid = false; branch.classList.add('is-invalid'); }
+
 
             if (!isValid) {
                 console.error('Validation Error: Missing required bank details.');
@@ -61,20 +62,23 @@ export function initFormSubmission() {
                 return; // Stop submission
             }
 
-            payload.pm.bn = bankName.value;
-            payload.pm.sc = swiftCode.value;
-            payload.pm.an = accountNumber.value;
-            payload.pm.rn = routingNumber.value;
-            payload.pm.br = branch.value;
-            payload.pm.ai = document.getElementById('pm_ai').value || undefined;
+            payload.paymentMethod.bankName = bankName.value;
+            payload.paymentMethod.swiftCode = swiftCode.value;
+            payload.paymentMethod.accountNumber = accountNumber.value;
+            payload.paymentMethod.routingNumber = routingNumber.value;
+            payload.paymentMethod.branch = branch.value;
+            payload.paymentMethod.additionalInfo = document.getElementById('pm_ai').value || undefined;
         } else if (currentPaymentMethod === 'pp') {
-            payload.pm.em = document.getElementById('pm_em').value;
+            payload.paymentMethod.email = document.getElementById('pm_em').value;
+        } else if (currentPaymentMethod === 'ot') {
+            payload.paymentMethod.type = 'ot';
+            payload.paymentMethod.email = 'Payment method details are provided in the additional notes section.';
         } else if (currentPaymentMethod === 'pl') {
-            payload.pl = document.getElementById('pl_url').value;
+            payload.paymentLink = document.getElementById('pl_url').value;
         }
 
         if (selectedSendType === 'ep' || selectedSendType === 'eh') {
-            payload.re = document.getElementById('re').value;
+            payload.recipientEmail = document.getElementById('re').value;
         }
 
         document.querySelectorAll('#invoiceListItems .invoice-item').forEach(itemDiv => {
@@ -83,16 +87,16 @@ export function initFormSubmission() {
                 const field = input.dataset.field;
                 let value = input.value;
                 if (input.type === 'number') value = parseFloat(value);
-                if (value || field === 'dc') item[field] = value;
+                if (value || field === 'description') item[field] = value;
             });
-            const monthTags = itemDiv.querySelector('[data-field="mr-tags"]');
+            const monthTags = itemDiv.querySelector('[data-field="monthRange-tags"]');
             if (monthTags && monthTags.dataset.selectedMonths) {
-                item.mr = JSON.parse(monthTags.dataset.selectedMonths);
+                item.monthRange = JSON.parse(monthTags.dataset.selectedMonths);
             }
-            payload.il.push(item);
+            payload.invoiceList.push(item);
         });
 
-        if (payload.st === 'dl') {
+        if (payload.sendType === 'dl') {
             dl_module.showLoadingPopup();
             // Hide the popup after a fixed duration, independent of the HTTP request result
             setTimeout(() => {

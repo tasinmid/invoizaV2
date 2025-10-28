@@ -1,4 +1,4 @@
-const BASE_URL = 'https://invoiza.onrender.com';
+const BASE_URL = 'http://localhost:4000';
 
 /**
  * Fetches the list of available templates from the backend.
@@ -6,7 +6,12 @@ const BASE_URL = 'https://invoiza.onrender.com';
  */
 export async function fetchTemplates() {
     try {
-        const response = await fetch(`${BASE_URL}/l`);
+        const response = await fetch(`${BASE_URL}/l`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -38,7 +43,7 @@ export async function generateInvoice(payload) {
 
         // If 'dl' is specified, return the raw response for blob processing in the UI.
         // Otherwise, parse as JSON.
-        if (payload.st === 'dl') {
+        if (payload.sendType === 'dl') {
             return response;
         }
         return response.json();

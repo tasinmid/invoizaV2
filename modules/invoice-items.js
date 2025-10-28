@@ -98,13 +98,13 @@ const addInvoiceItem = () => {
     if (addInvoiceItemBtn.disabled) return;
 
     const currentInvoiceType = itBtnGroup.querySelector('.active').dataset.value;
-    const template = currentInvoiceType === 'ot' ? otItemTemplate : mpItemTemplate;
+    const template = currentInvoiceType === 'oneTimePayment' ? otItemTemplate : mpItemTemplate;
     const newItem = template.content.cloneNode(true);
     const itemDiv = newItem.querySelector('.invoice-item');
     
     invoiceListItemsDiv.appendChild(itemDiv);
 
-    if (currentInvoiceType === 'mp') {
+    if (currentInvoiceType === 'monthlyPayment') {
         setupMonthSelector(itemDiv);
     }
     

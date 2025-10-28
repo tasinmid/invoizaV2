@@ -67,7 +67,7 @@ export function togglePaymentMethodFields(activeValue) {
                 field.disabled = false;
             }
         });
-    } else if (activeValue === 'other') {
+    } else if (activeValue === 'ot') {
         if(otherPaymentNote) otherPaymentNote.classList.add('active');
     }
 }
