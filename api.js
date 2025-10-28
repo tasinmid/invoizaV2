@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:4000';
+const BASE_URL = 'https://invoiza.onrender.com';
 
 /**
  * Fetches the list of available templates from the backend.
