@@ -98,18 +98,20 @@ if (!branch.value) { isValid = false; branch.classList.add('is-invalid'); }
 
         if (payload.sendType === 'dl') {
             dl_module.showLoadingPopup();
-            // Hide the popup after a fixed duration, independent of the HTTP request result
-            setTimeout(() => {
-                dl_module.hidePopup();
-                showPreregModal();
-            }, 3000); // Hide after 3 seconds
+            console.log('Detected sendType: dl. Showing loading popup.');
         }
 
         try {
+            console.log('Calling generateInvoice with payload:', payload);
             const result = await generateInvoice(payload);
-            if (payload.st === 'dl') {
+            console.log('generateInvoice returned result:', result);
+
+            if (payload.sendType === 'dl') {
+                console.log('Processing result for download.');
                 const blob = await result.blob();
+                console.log('Blob created:', blob);
                 const url = window.URL.createObjectURL(blob);
+                console.log('Object URL created:', url);
                 const a = document.createElement('a');
                 a.style.display = 'none';
                 a.href = url;
@@ -124,17 +126,27 @@ if (!branch.value) { isValid = false; branch.classList.add('is-invalid'); }
                 }
                 a.download = filename;
                 document.body.appendChild(a);
+                console.log('Anchor element created and appended to body. Attempting click.');
                 a.click();
+                console.log('Anchor element clicked.');
                 window.URL.revokeObjectURL(url);
+                console.log('Object URL revoked.');
                 a.remove();
-                console.log('PDF download initiated.');
+                console.log('Anchor element removed. PDF download initiated.');
+                
+                // Now hide popup and show prereg modal
+                dl_module.hidePopup();
+                showPreregModal();
             } else {
                 console.log('API Response:', result);
             }
         } catch (error) {
             console.error('API Error:', error);
             console.log('API call failed: ' + error.message);
-            // No need to hide popup here, as it's handled by the setTimeout
+            if (payload.sendType === 'dl') {
+                dl_module.hidePopup();
+                console.log('Loading popup hidden due to API error.');
+            }
         }
     });
 }
