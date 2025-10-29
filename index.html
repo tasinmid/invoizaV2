@@ -27,20 +27,20 @@
             <h4>Invoice Item</h4>
             <div class="mb-3">
                 <label class="form-label">Name <span class="help-icon-placeholder"></span></label>
-                <input type="text" class="form-control" data-field="nm" required>
+                <input type="text" class="form-control" data-field="name" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">Description <span class="help-icon-placeholder"></span></label>
-                <input type="text" class="form-control" data-field="dc">
+                <input type="text" class="form-control" data-field="description">
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Quantity <span class="help-icon-placeholder"></span></label>
-                    <input type="number" class="form-control" data-field="qt" value="1" min="1" required>
+                    <input type="number" class="form-control" data-field="quantity" value="1" min="1" required>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Unit Price <span class="help-icon-placeholder"></span></label>
-                    <input type="number" class="form-control" data-field="up" value="50" min="0" step="50" required>
+                    <input type="number" class="form-control" data-field="unitPrice" value="50" min="0" step="50" required>
                 </div>
             </div>
         </div>
@@ -52,17 +52,17 @@
             <h4>Invoice Item</h4>
             <div class="mb-3">
                 <label class="form-label">Name <span class="help-icon-placeholder"></span></label>
-                <input type="text" class="form-control" data-field="nm" required>
+                <input type="text" class="form-control" data-field="name" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">Description <span class="help-icon-placeholder"></span></label>
-                <input type="text" class="form-control" data-field="dc">
+                <input type="text" class="form-control" data-field="description">
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Month Duration <span class="help-icon-placeholder"></span></label>
                     <div class="month-selector-container">
-                        <div class="selected-months-tags" data-field="mr-tags"></div>
+                        <div class="selected-months-tags" data-field="monthRange-tags"></div>
                         <div class="dropdown">
                             <button type="button" class="btn btn-primary dropdown-toggle add-month-btn" data-bs-toggle="dropdown"><i class="bi bi-plus-lg me-2"></i>Add Month</button>
                             <ul class="dropdown-menu month-dropdown"></ul>
@@ -71,7 +71,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Per Month Cost <span class="help-icon-placeholder"></span></label>
-                    <input type="number" class="form-control" data-field="pm" value="50" min="0" step="50" required>
+                    <input type="number" class="form-control" data-field="perMonthCost" value="50" min="0" step="50" required>
                 </div>
             </div>
         </div>
@@ -221,7 +221,7 @@
                                         <button type="button" class="btn btn-outline-primary" data-value="pl">
                                             <i class="bi bi-link-45deg"></i><span class="button-text">Payment Link</span>
                                         </button>
-                                        <button type="button" class="btn btn-outline-primary" data-value="other">
+                                        <button type="button" class="btn btn-outline-primary" data-value="ot">
                                             <i class="bi bi-three-dots"></i><span class="button-text">Other</span>
                                         </button>
                                     </div>
@@ -295,10 +295,10 @@
                                 <div class="mb-4">
                                     <label class="form-label">Invoice Type <i class="bi bi-question-circle-fill ms-1" data-bs-toggle="tooltip" title="'One-Time' for standard invoices. 'Monthly' for subscription-style line items."></i></label>
                                     <div id="it-btn-group" class="btn-group w-100">
-                                        <button type="button" class="btn btn-outline-primary active" data-value="ot">
+                                        <button type="button" class="btn btn-outline-primary active" data-value="oneTimePayment">
                                             <i class="bi bi-cash-coin"></i><span class="button-text">One-Time Payment</span>
                                         </button>
-                                        <button type="button" class="btn btn-outline-primary" data-value="mp">
+                                        <button type="button" class="btn btn-outline-primary" data-value="monthlyPayment">
                                             <i class="bi bi-calendar-check"></i><span class="button-text">Monthly</span>
                                         </button>
                                     </div>
